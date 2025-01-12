@@ -1,0 +1,69 @@
+game_scenario = {
+    "start": {
+        "description": "جلوی شما یک درفلزی ظاهر می شود و شما به بالای آن نگاه می کنید.یک نوشته در بالای در در حک شده:((دانشگاه چمران)).",
+        "options": {
+            "اطراف را بگرد": "sideroom",
+            "برو خانه": "home"
+        }
+    },
+    "home": {
+        "description": "نا گهان دور شما را مهی سنگین می گیرد و شما برای همیشه گم شده اید",
+        "options": {}
+    },
+    "sideroom": {
+        "description": "شما اطراف را می گردید و یه اتاقک کوچک با دری باز پیدا می کنید که به داخل دانشگاه ختم می شود.شما نمی دانید چرا این را می دانید ولی حسی در درون شمااین را به شما با حالی گرم القا می کند. ",
+        "options": {
+            "به عقب نگاه کن": "start",
+            "برو داخل": "side",
+            "برو خانه": "home"
+        }
+    },
+    "side": {
+        "description": "شما داخل محوطه دانشگاه هستید ولی یه چیزی اشتباه است شما احساسش می کنید.صدایی از پشت شما می آید",
+        "options": {
+            "برو جلو": "computer",
+            "به عقب نگاه کن": "home"
+        }
+    },
+    "computer": {
+        "description": "با اولین قدمی که برمیدارید فظای اطراف شما تغییر می کند ودر روبه روی شما یک در قفل است.این در  در سالن یک است.",
+        "options": {
+            "در بزن": "nothing",
+            "خودانفجار": "dooropen"
+        }
+    },
+    "dooropen": {
+        "description": "شما  خود را منفجر کردید.درب باز شد.شما داخلید",
+        "options": {
+            "برو بشین": "end"
+        }
+    },
+    "nothing": {
+        "description": ";]هیچ چیز تغییر نکرد.",
+        "options": {
+            "خودانفجار": "dooropen",
+            "برگرد": "start"
+        }
+    },
+    "end": {
+        "description": "شما سرجای خود نشستید.دوباره صدایی از پشت سر شما می آید ولی این دفعه می توان صدا را به واضح شنید:((وقتی بیدار شدی یکجا یادداشتش کن)",
+        "options": {}
+    }
+}
+
+def Gome():
+    current_place = "start"
+    while True:
+        print(game_scenario[current_place]["description"])
+        if not game_scenario[current_place]["options"]:
+            print("Fin!")
+            break
+        choice = input("چه کاری  می کنید؟ ").strip()
+        
+        if choice in game_scenario[current_place]["options"]:
+            current_place = game_scenario[current_place]["options"][choice]
+        else:
+            print("Idon`t Undrestand")
+
+
+Gome()
